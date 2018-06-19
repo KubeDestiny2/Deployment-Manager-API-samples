@@ -14,7 +14,7 @@ OAUTH_DEFAULT = [
 DEFAULT_NODE_POOL = [{
     'name': 'default-inside-cluster',
     'config': {
-        'machineType': 'f1-micro',
+        'machineType': 'f1-micro', #set the machine type
         'oauthScopes': OAUTH_DEFAULT,
         'preemptible': True,
         'taints': [
@@ -26,7 +26,7 @@ DEFAULT_NODE_POOL = [{
         ],
     },
     'initialNodeCount': 2,
-    'version': '1.8.10-gke.0',
+    'version': '1.8.10-gke.0', #set the gke version
     'autoscaling': {
         'enabled': False
     },
@@ -35,6 +35,16 @@ DEFAULT_NODE_POOL = [{
       'autoUpgrade': False
     }
 }]
+
+
+def GenerateSubnetwork(context):
+    """In case if there's no ip allocation policy enabled for the cluster object
+    google API requires to define subnetwork on the top level of the object's properties
+    otherwise it has to be omitted or set to empty string"""
+
+    if context.properties['ipAllocationPolicy']['createSubnetwork']:
+        return ''
+    return context.properties['subnetwork']
 
 def GenerateNodePoolDMobject(node_pool, cluster_name, project, region, obj_type):
     """Generate nodePool DM object"""
@@ -50,16 +60,6 @@ def GenerateNodePoolDMobject(node_pool, cluster_name, project, region, obj_type)
                       }
 
     return node_pool_config
-
-
-def GenerateSubnetwork(context):
-    """In case if there's no ip allocation policy enabled for the cluster object
-    google API requires to define subnetwork on the top level of the object's properties
-    otherwise it has to be omitted or set to empty string"""
-
-    if context.properties['ipAllocationPolicy']['createSubnetwork']:
-        return ''
-    return context.properties['subnetwork']
 
 
 def GenerateConfig(context):
