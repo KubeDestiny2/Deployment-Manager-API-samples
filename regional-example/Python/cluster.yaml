@@ -43,5 +43,5 @@ resources:
       createSubnetwork: true
       subnetworkName: 'my-cluster' # the network name that will be created with IP Alias range
       nodeIpv4CidrBlock: 10.9.0.0/22
-      clusterIpv4CidrBlock: 10.16.0.0/14
-      servicesIpv4CidrBlock: 10.8.32.0/20
+      clusterIpv4CidrBlock: 192.16.0.0/14
+      servicesIpv4CidrBlock: 192.8.32.0/20
