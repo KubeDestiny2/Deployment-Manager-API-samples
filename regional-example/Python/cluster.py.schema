@@ -1,7 +1,6 @@
 
 info:
   title: GKE cluster
-  author: Alioua Larbi, 
   description: Creates a GKE cluster.
 
 required:
@@ -208,16 +207,10 @@ properties:
     additionalProperties: false
     default:
       enabled: false
-      provider: Test
     properties:
       enabled:
         type: boolean
         default: false
-      provider:
-        type: string
-        enum:
-        - Test
-        default: Test
   ipAllocationPolicy:
     type: object
     description: Secondary ranges configuration
