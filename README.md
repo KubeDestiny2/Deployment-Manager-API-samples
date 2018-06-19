@@ -17,5 +17,6 @@ When ready, deploy with the following command:
 gcloud deployment-manager deployments create gke-cluster --config cluster.yaml
 This will result in two resources:
 
-a GKE cluster named gke-cluster-my-cluster
+a GKE cluster named gke-cluster-my-cluster 
+
 a Deployment Manager type named gke-cluster-my-cluster-type
