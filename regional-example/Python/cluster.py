@@ -14,7 +14,7 @@ OAUTH_DEFAULT = [
 DEFAULT_NODE_POOL = [{
     'name': 'default-inside-cluster',
     'config': {
-        'machineType': 'f1-micro', #set the machine type
+        'machineType': 'g1-small', #set the machine type
         'oauthScopes': OAUTH_DEFAULT,
         'preemptible': True,
         'taints': [
